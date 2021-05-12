@@ -10,11 +10,25 @@ import { LogLevel } from "@azure/msal-browser";
  * For a full list of MSAL.js configuration parameters, visit:
  * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/configuration.md 
  */
+
+// Breakpoint at react-msal-demo\src\utils\azureHelpers.js trace and found these values from Tony's example:
+// Try from following files:
+//     react-msal-demo\src\config\config.dev.js
+//     react-msal-demo\src\config\config.prd.js
+//     react-msal-demo\src\config\config.qas.js 
+const CLIENT_ID           = "b4c29cea-96c4-4a46-85dd-42637e359167"
+const AUTH_HOST_SERVER    = "https://login.microsoftonline.com"
+const TENANT_ID           = "de0795e0-d7c0-4eeb-b9bb-bc94d8980d3b"
+const MICROSOFT_GRAPH_URL = "https://graph.microsoft.com/v1.0"
+ 
 export const msalConfig = {
     auth: {
-        clientId: "Enter_the_Application_Id_Here",
-        authority: "Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here",
-        redirectUri: "Enter_the_Redirect_Uri_Here"
+        // clientId: "Enter_the_Application_Id_Here",
+        // authority: "Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here",
+        // redirectUri: "Enter_the_Redirect_Uri_Here"
+        clientId: CLIENT_ID,
+        authority: `${AUTH_HOST_SERVER}/${TENANT_ID}`,
+        redirectUri: `${window.location.origin}`,
     },
     cache: {
         cacheLocation: "sessionStorage", // This configures where your cache will be stored
@@ -52,7 +66,8 @@ export const msalConfig = {
  * https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes
  */
 export const loginRequest = {
-    scopes: ["User.Read"]
+    // scopes: ["User.Read"]  // original 
+    scopes: ["user.read", "user.readbasic.all"],  // from Tony's sample code react-msal-demo\src\utils\azureHelpers.js 
 };
 
 /**
@@ -60,5 +75,6 @@ export const loginRequest = {
  * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/resources-and-scopes.md
  */
 export const graphConfig = {
-    graphMeEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me"
+    // graphMeEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me"
+    graphMeEndpoint: `${MICROSOFT_GRAPH_URL}/me`
 };
