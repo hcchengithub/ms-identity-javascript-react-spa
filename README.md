@@ -2,6 +2,13 @@
 
 This sample demonstrates how to use [MSAL React](https://www.npmjs.com/package/@azure/msal-react) to login, logout, conditionally render components to authenticated users, and acquire an access token for a protected resource such as Microsoft Graph.
 
+## 筆記 2021/05/12 14:46:00 H.C.Chen
+
+這個 solution 實現 AD logon 不需要 back end, 參考本範例從 EzAuto Editor 的 front end 著手即可。
+
+感謝 Tony HS Li 推薦本文 [Tutorial: Sign in users and call the Microsoft Graph API from a React single-page app (SPA) using auth code flow](https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-react) 經試驗總算成功了。經觀察其 behavior 可望符合 EzAuto Editor's task [Backer-1588](https://swpc.atlassian.net/browse/BACKER-1588) 的需求。 
+照說只要照本文 readme.md 的指引把 Azure AD 相關的參數修改成公司的，就可以順利執行。但是 authority 項的說明不正確，無法理解。有 Tony 的例子，確定跑得起來，然後去抄他的設定，這樣就可以了。
+
 ## Features
 
 This sample demonstrates the following MSAL React concepts:
