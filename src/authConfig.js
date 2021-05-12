@@ -11,8 +11,9 @@ import { LogLevel } from "@azure/msal-browser";
  * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/configuration.md 
  */
 
+// 2021/05/12 14:36:39 H.C. Chen 
 // Breakpoint at react-msal-demo\src\utils\azureHelpers.js trace and found these values from Tony's example:
-// Try from following files:
+// They are from following files:
 //     react-msal-demo\src\config\config.dev.js
 //     react-msal-demo\src\config\config.prd.js
 //     react-msal-demo\src\config\config.qas.js 
@@ -65,9 +66,10 @@ export const msalConfig = {
  * For more information about OIDC scopes, visit: 
  * https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes
  */
+// debugger; // H.C. Chen 
 export const loginRequest = {
-    // scopes: ["User.Read"]  // original 
-    scopes: ["user.read", "user.readbasic.all"],  // from Tony's sample code react-msal-demo\src\utils\azureHelpers.js 
+    scopes: ["User.Read"]  // original 
+    // H.C. Chen 試過了，不需要。scopes: ["user.read", "user.readbasic.all"],  // from Tony's sample code react-msal-demo\src\utils\azureHelpers.js 
 };
 
 /**
